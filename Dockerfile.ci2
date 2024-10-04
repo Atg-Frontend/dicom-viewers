@@ -1,0 +1,10 @@
+FROM node:20-alpine
+RUN apk add --no-cache bash
+WORKDIR /app
+
+RUN npm install -g serve
+COPY platform/app/dist ./
+
+EXPOSE 3000
+# npx serve ./ -c ./serve.json
+CMD ["npx", "serve", "./", "-c", "./serve.json"]
